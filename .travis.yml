@@ -1,0 +1,24 @@
+language: node_js
+node_js: stable
+cache:
+  directories:
+  - node_modules
+install:
+- npm install
+script:
+- npm run index
+- npx hexo generate
+after_script:
+- cd public
+- git init
+- git config user.name "ladyrick"
+- git config user.email "ladyrick@qq.com"
+- git add .
+- git commit -m "travis"
+- git push -f "https://${MY_TOKEN}@github.com/ladyrick/leetcode.git" master:gh-pages
+branches:
+  only:
+  - master
+env:
+  global:
+    secure: Td97D4pYiTmvFmItCUzxd1ZPuNd/1malRmsHsNYJoFbGa11hw3572rh9gI3nue9Xr9jV6U1/uBNBQmIQC4vxbVY9VxiZPAiO9ts1VbxJdSqVzToNK+fKXwvM8mYjoErontbjAgGPct6I6jqHFst6bG9F37WajmIOOm8KGBrIXWO3AsrSV4mzr6xA+ER8BT3fNSVq+D+AEUmkl9h3I9Fl005mMIGs/tcr9ke1UyYr4Au72tFvWOoj0+glcbNuILAUilxLwB5LO0f+JWzXGUPOeK+ej2vK2pof0Pr0UZt9eVOPBG1TomHzdoBduMIEcskeoisLU6sXlmO2431+zbJ38cZzT8ZuAvvC3DGPWRK11+bUMaBvjC/4qXxCaKWq0zVLE1P0z+B89xd8dW9vnem1tJpx85S9EY0fPwzVS09MLfdIRPN9u3vR8DcE8xKoLzUVR51enKGTiTEuj4uLkeW5eMgIRaK2hSz2/NuJyAX1wiDKcLSSOVKo0Ww1C72FRdPnnhxWvB2Lw0Cdkuqkl3xH2ub/DADrp4XE+taAV/oNFsphNEysILrwtyi6WQOaHCMUrIFcgvOpYyuhGhtD0q03NvsS+1f2ivejHuRe99wPaW/OHB1Ugnz8lvKQqt7KvZ5DItxWwz6u0RE8xmz5uZFrbCD2yIGePMVxeKiXdIvQFGw=
