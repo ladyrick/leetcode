@@ -27,6 +27,37 @@ return [0, 1].
 ----------
 # Solution
 
+```C++
+static auto x = [](){
+    // turn off sync
+    std::ios::sync_with_stdio(false);
+    // untie in/out streams
+    cin.tie(nullptr);
+    return 0;
+}();
+
+class Solution {
+private:
+    unordered_map<int, int> umap;
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int size = nums.size();
+        for (int i = 0; i < size; i++){
+            auto r = umap.find(target - nums[i]);
+            if (r != umap.end()){
+                return vector<int>{i, r->second};
+            }
+            umap[nums[i]] = i;
+        }
+    }
+};
+```
 
 ----------
 # Discussion
+
+前面那一段，用来解决频繁输出到stdout中很费时间的问题。
+
+后面，用unordered_map实现快速查找，很神奇。
+
+另外，把`unordered_map<int, int> umap;`的初始化放到函数外面，进一步提速（很trick）。
