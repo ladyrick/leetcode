@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 divisionLine: true
 articleImgInCenter: true
-showTags: false
+showTags: true
 showCategories: true
 toTop:
   use: ture
@@ -45,9 +45,12 @@ img:
   avatar: '/avatar-default.png'
 sns:
 # eg.
-#  email:
-#    link: "mailto:example@example.com"
-#    icon: fa-envelope-o
+email:
+  link: "mailto:ladyrick@qq.com"
+  icon: fa-envelope-o
+github:
+  link: "https://github.com/ladyrick"
+  icon: fa fa-github
 
 
 # ---------------------------------------------------------------

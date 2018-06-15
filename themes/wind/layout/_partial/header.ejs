@@ -49,7 +49,7 @@
 
                 <% for (var i in theme.pages){ %>
                     <span>
-                        <a class="header-btn" href="<%= theme.pages[i].link %>" title="<%= i %>"><i class="fa <%= theme.pages[i].icon %>"></i></a>
+                        <a class="header-btn" href="<%= config.root %>/<%= theme.pages[i].link %>" title="<%= i %>"><i class="fa <%= theme.pages[i].icon %>"></i></a>
                     </span>
                 <% } %>
             <% } %>
