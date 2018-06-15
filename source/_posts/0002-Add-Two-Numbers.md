@@ -28,7 +28,44 @@ Explanation: 342 + 465 = 807.
 ----------
 # Solution
 ```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 
+static int _ = [](){
+    std::ios::sync_with_stdio(false);
+    cin.tie();
+    return 0;
+}();
+
+class Solution {
+private:
+    ListNode * head = new ListNode(0);
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        auto result = head;
+        int val, car=0;
+        while (l1||l2){
+            val = (l1?l1->val:0) + (l2?l2->val:0) + car;
+            result->next = new ListNode(val % 10);
+            car = val / 10;
+            result = result->next;
+            if (l1) l1 = l1->next;
+            if (l2) l2 = l2->next;
+        }
+        if (car != 0){
+            result->next = new ListNode(car);
+        }
+        return head->next;
+    }
+};
 ```
 ----------
 # Discussion
+
+使用一个head节点，避免在循环内部每次都判断是不是首次创建节点，这样比较快。
