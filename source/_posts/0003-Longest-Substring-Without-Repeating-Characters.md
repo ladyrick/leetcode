@@ -12,6 +12,9 @@ tags:
 <!-- 记得完善 tags 和 category 字段 -->
 
 # Description
+
+**LINK:** https://leetcode.com/problems/longest-substring-without-repeating-characters
+
 Given a string, find the length of the longest substring without repeating characters.
 
 Examples:
@@ -26,7 +29,8 @@ Given `"pwwkew"`, the answer is `"wke"`, with the length of 3. Note that the ans
 
 ----------
 # Solution
+```c++
 
-
+```
 ----------
 # Discussion
