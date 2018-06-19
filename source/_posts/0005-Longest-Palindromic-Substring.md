@@ -101,7 +101,7 @@ init L = 0, R = 0, C = 0;
 if i > R,
     then expand L and R, update C = i
 
-else if P[ i' ] < R – i,
+else if P[ i’ ] < R – i,
     then P[ i ] ← P[ i’ ]
 else
     P[ i ] >= P[ i’ ]. (Which we have to expand past the right edge (R) to find P[ i ].
@@ -112,4 +112,4 @@ else
 ```C++
 string t(10,'^');
 ```
-表示初始化为10个'^'。
+表示初始化为10个`'^'`。
