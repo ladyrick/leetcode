@@ -1,6 +1,6 @@
 ---
 title: 4. Median of Two Sorted Arrays
-category: hard
+category: Hard
 order: 4
 date: 2018-06-19 15:42:06
 tags:
