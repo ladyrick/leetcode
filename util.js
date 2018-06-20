@@ -14,46 +14,37 @@
             console.log("Error. Correct format: npm run new num title");
             return;
         }
-        var numstr = num.toString();
-        var slug = "";
-        for (var i = 0; i < 4 - numstr.length; i++) {
-            slug += "0";
-        }
-        slug += numstr + "-" + argv.slice(4).join("-");
+        var slug = num + "-";
+        slug += argv.slice(4).join("-");
+        slug = slug.replace(/\(|\)|\[|\]|\{|\}/g, "").toLowerCase();
         var title = '"' + num + ". " + argv.slice(4).join(" ") + '"';
-        var order = num;
+        var order = num.toString();
         var cmd = "npx hexo new " + title + " --order=" + order +
             " --slug=" + slug + " --category=unset";
-
         console.log(cmd);
         execSync(cmd);
     } else if (argv[2] === "index") {
+        var del = require("del");
         var fs = require("fs");
-        var files = fs.readdirSync("source/_posts");
-
+        del.sync("source/_posts/0");
+        execSync("npx hexo generate");
+        var database = JSON.parse(fs.readFileSync("db.json"));
         var towrite = "|  |  |  |\n| :- |  | :- |\n";
-
-        for (var f of files) {
-            if (f.substr(0, 5) === "index") {
-                fs.unlinkSync("source/_posts/" + f);
-            } else {
-                var num = parseInt(f.substr(0, 4));
-                var slug = f.slice(0, -3);
-                var title = slug.substr(5).replace("-", " ");
-                towrite += "| " + num + " | &nbsp;&nbsp;&nbsp;&nbsp; | {% post_link " + slug + " " + title + " %} |\n";
-            }
+        for (var post of database.models.Post.sort((a, b) => a.order - b.order)) {
+            towrite += "| " + post.order + " | &nbsp;&nbsp;&nbsp;&nbsp; | {% post_link "
+                + post.slug + " \"" + post.title.match(/^\d+\. (.+)$/)[1] + "\" %} |\n";
         }
-
-        var cmd = "npx hexo new index index";
+        var cmd = "npx hexo new index index --path=0/index";
         console.log(cmd)
         execSync(cmd);
-        fs.open("source/_posts/index.md", "a", function (e, fd) {
+        fs.open("source/_posts/0/index.md", "a", function (e, fd) {
             if (e) throw e;
             fs.write(fd, towrite, function (e) {
                 if (e) throw e;
                 fs.closeSync(fd);
             });
         });
+        del.sync(["./db.json", "./public"]);
     } else {
         console.log("Error. Correct format: npm run new/index ...");
         return;
