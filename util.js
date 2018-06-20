@@ -44,7 +44,9 @@
             }
         }
 
-        execSync("npx hexo new index index");
+        var cmd = "npx hexo new index index";
+        console.log(cmd)
+        execSync(cmd);
         fs.open("source/_posts/index.md", "a", function (e, fd) {
             if (e) throw e;
             fs.write(fd, towrite, function (e) {
