@@ -1,4 +1,4 @@
-//hexo new 0001-Two-Sum --date=-1000 --category= --tags=
+//npx hexo new 0001-Two-Sum --date=-1000 --category= --tags=
 
 "use strict";
 (function () {
@@ -22,7 +22,7 @@
         slug += numstr + "-" + argv.slice(4).join("-");
         var title = '"' + num + ". " + argv.slice(4).join(" ") + '"';
         var order = num;
-        var cmd = "hexo new " + title + " --order=" + order +
+        var cmd = "npx hexo new " + title + " --order=" + order +
             " --slug=" + slug + " --category=unset";
 
         console.log(cmd);
@@ -44,7 +44,7 @@
             }
         }
 
-        execSync("hexo new index index");
+        execSync("npx hexo new index index");
         fs.open("source/_posts/index.md", "a", function (e, fd) {
             if (e) throw e;
             fs.write(fd, towrite, function (e) {
