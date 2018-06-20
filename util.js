@@ -26,7 +26,7 @@
     } else if (argv[2] === "index") {
         var del = require("del");
         var fs = require("fs");
-        del.sync("./source/_posts/index*");
+        del.sync(["./source/_posts/index*", "./db.json", "./public"]);
         execSync("npx hexo generate");
         var database = JSON.parse(fs.readFileSync("db.json"));
         var towrite = "|  |  |  |\n| :- |  | :- |\n";
@@ -44,7 +44,7 @@
                 fs.closeSync(fd);
             });
         });
-        del.sync(["./db.json", "./public"]);
+        del.sync(["./source/_posts/index/", "./db.json", "./public"]);
     } else {
         console.log("Error. Correct format: npm run new/index ...");
         return;
