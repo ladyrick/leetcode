@@ -5,7 +5,5 @@ db.json
 node_modules/
 public/
 .deploy*/
-source/_posts/0
-
-
+source/_posts/index*
 package-lock.json

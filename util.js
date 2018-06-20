@@ -26,7 +26,7 @@
     } else if (argv[2] === "index") {
         var del = require("del");
         var fs = require("fs");
-        del.sync("source/_posts/0");
+        del.sync("./source/_posts/index*");
         execSync("npx hexo generate");
         var database = JSON.parse(fs.readFileSync("db.json"));
         var towrite = "|  |  |  |\n| :- |  | :- |\n";
@@ -34,7 +34,7 @@
             towrite += "| " + post.order + " | &nbsp;&nbsp;&nbsp;&nbsp; | {% post_link "
                 + post.slug + " \"" + post.title.match(/^\d+\. (.+)$/)[1] + "\" %} |\n";
         }
-        var cmd = "npx hexo new index index --path=0/index";
+        var cmd = "npx hexo new index index --path=index";
         console.log(cmd)
         execSync(cmd);
         fs.open("source/_posts/0/index.md", "a", function (e, fd) {
