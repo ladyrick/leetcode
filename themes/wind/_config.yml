@@ -14,9 +14,9 @@ catalogBtn:
 excerpt: 100
 footer: true
 pages: 
-  archives:
-    link: "/archives"
-    icon: "fa fa-file-text-o"
+# archives:
+#   link: "/archives"
+#   icon: "fa fa-file-text-o"
 color:
   deactive: '#37474f'
   active: '#006064'  
