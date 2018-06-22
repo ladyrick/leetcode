@@ -1,7 +1,7 @@
 ---
 title: 5. Longest Palindromic Substring
 category: Medium
-order: 5
+order: 10005
 date: 2018-06-19 23:26:15
 tags:
 - String

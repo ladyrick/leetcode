@@ -1,7 +1,7 @@
 ---
 title: 3. Longest Substring Without Repeating Characters
 category: Medium
-order: 3
+order: 10003
 date: 2018-06-15 02:45:17
 tags:
 - Hash Table

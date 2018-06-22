@@ -1,7 +1,7 @@
 ---
 title: 1. Two Sum
 category: Easy
-order: 1
+order: 10001
 date: 2018-06-15 02:34:34
 tags:
 - Array

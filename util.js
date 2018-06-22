@@ -18,9 +18,9 @@
         slug += argv.slice(4).join("-");
         slug = slug.replace(/\(|\)|\[|\]|\{|\}/g, "").toLowerCase();
         var title = '"' + num + ". " + argv.slice(4).join(" ") + '"';
-        var order = num.toString();
-        var cmd = "npx hexo new " + title + " --order=" + order +
-            " --slug=" + slug + " --category=unset";
+        var order = 10000 + num;
+        var cmd = "npx hexo new " + title + " --order=\"" + order +
+            "\" --slug=" + slug + " --category=unset";
         console.log(cmd);
         execSync(cmd);
     } else if (argv[2] === "index") {

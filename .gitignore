@@ -7,3 +7,4 @@ public/
 .deploy*/
 source/_posts/index*
 package-lock.json
+.vscode

@@ -1,7 +1,7 @@
 ---
 title: 7. Reverse Integer
 category: Easy
-order: 7
+order: 10007
 date: 2018-06-20 13:52:20
 tags:
 - Math

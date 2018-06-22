@@ -1,7 +1,7 @@
 ---
 title: 6. ZigZag Conversion
 category: Medium
-order: 6
+order: 10006
 date: 2018-06-20 13:19:38
 tags:
 - String

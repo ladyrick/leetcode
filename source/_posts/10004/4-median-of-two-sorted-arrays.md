@@ -1,7 +1,7 @@
 ---
 title: 4. Median of Two Sorted Arrays
 category: Hard
-order: 4
+order: 10004
 date: 2018-06-19 15:42:06
 tags:
 - Array

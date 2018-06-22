@@ -1,7 +1,7 @@
 ---
 title: 8. String to Integer (atoi)
 category: Medium
-order: 8
+order: 10008
 date: 2018-06-22 10:08:34
 tags:
 - Math

@@ -1,7 +1,7 @@
 ---
 title: 9. Palindrome Number
 category: Easy
-order: 9
+order: 10009
 date: 2018-06-22 13:00:15
 tags:
 - Math

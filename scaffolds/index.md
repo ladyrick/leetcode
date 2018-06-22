@@ -1,8 +1,10 @@
 ---
 title: All Problems List
 date: {{ date }}
-order: 100000
+order: 99999
 ---
+
+<!-- more -->
 
 ```C++
 static int _ = []() {
@@ -11,5 +13,4 @@ static int _ = []() {
     return 0;
 }();
 ```
-<!-- more -->
 
