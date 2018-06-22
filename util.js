@@ -29,7 +29,7 @@
         del.sync(["./source/_posts/index*", "./db.json", "./public"]);
         execSync("npx hexo generate");
         var database = JSON.parse(fs.readFileSync("db.json"));
-        var towrite = "|  |\n|:-|";
+        var towrite = "|  |\n|:-|\n";
         for (var post of database.models.Post.sort((a, b) => a.order - b.order)) {
             towrite += "|{% post_link " + post.slug + " " + post.title + " %}|\n";
         }
