@@ -29,10 +29,9 @@
         del.sync(["./source/_posts/index*", "./db.json", "./public"]);
         execSync("npx hexo generate");
         var database = JSON.parse(fs.readFileSync("db.json"));
-        var towrite = "|  |  |  |\n| :- |  | :- |\n";
+        var towrite = "";
         for (var post of database.models.Post.sort((a, b) => a.order - b.order)) {
-            towrite += "| " + post.order + " | &nbsp;&nbsp;&nbsp;&nbsp; | {% post_link "
-                + post.slug + " \"" + post.title.match(/^\d+\. (.+)$/)[1] + "\" %} |\n";
+            towrite += "{% post_link " + post.slug + " " + post.title + " %}\n";
         }
         var cmd = "npx hexo new index index --path=index";
         console.log(cmd)
