@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <!-- Head -->
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="ladyrick">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",String,Dynamic Programming">
+
+    <!-- Page Title -->
+    
+        <title>5. Longest Palindromic Substring | Leetcode Solutions</title>
+    
+    <link rel="icon" href="/leetcode//img/favicon-leetcode.png">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="/leetcode/js/script.js"></script>
+    <link rel="stylesheet" href="/leetcode/css/style.css">
+    
+    <style>
+        .deactiveColor{
+            color: #37474f;
+        }
+        .activeColor{
+            color: #006064;
+        }
+        a:hover{
+            color: #006064;
+        }
+        .header-btn{
+            color: #37474f;
+        }
+        
+        .post-content img{
+            margin: 50px auto;
+        }
+        
+    </style>
+</head>
+    <body>
+        <div class="container">
+
+            <!-- Top Anchor -->
+            <div id="top"></div>
+
+            <!-- Header -->
+            <header class="header-wrapper">
+    <div class="header-title-wrapper">
+        <!-- Page Title -->
+        <p class="header-title">
+             
+                
+                    5. Longest Palindromic Substring
+                
+            
+        </p>  
+    </div>    
+
+    
+        <!-- Division Line -->
+        <div class="division"></div> 
+    
+    
+    <div class="header-detail">
+        <!-- Header Button -->
+        <div class="header-btn-wrapper">
+            
+                <span>
+                    <a class="home-btn header-btn" href="/leetcode/" title="homepage"><i class="fa fa-home"></i></a>
+                </span>
+
+                
+                    <span>
+                        <a class="catalog-btn header-btn"><i class="fa fa-list-ul"></i></a>
+                    </span>
+                
+            
+        </div>
+    </div>
+</header>
+
+            <!-- Main -->
+            <main>
+                <article class="post-wrapper">
+    
+
+    
+        <!-- Article Catalog -->
+        <div class="catalog-dropdown col-xs-12 col-sm-12">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Discussion"><span class="toc-number">3.</span> <span class="toc-text">Discussion</span></a></li></ol>
+        </div>
+    
+
+    
+        <!--For now, Lightbox Only Show in Post Layout -->
+        
+
+        
+        
+    
+
+    
+
+    <!-- Article Content -->
+    <div class="post-content">
+        <!-- 记得完善 tags 和 category 字段 -->
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p><strong>LINK:</strong> <a href="https://leetcode.com/problems/longest-palindromic-substring" target="_blank" rel="noopener">https://leetcode.com/problems/longest-palindromic-substring</a></p>
+<p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.</p>
+<p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure></p>
+<p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">auto</span> _ = []()</span><br><span class="line">&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie();</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.size() &lt;= <span class="number">1</span>) <span class="keyword">return</span> s;</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">t</span><span class="params">(<span class="number">2</span>*s.size()+<span class="number">3</span>, <span class="string">'^'</span>)</span></span>;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)&#123;</span><br><span class="line">            t[len++] = <span class="string">'#'</span>;</span><br><span class="line">            t[len++] = s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        t[len++] = <span class="string">'#'</span>;</span><br><span class="line">        t[len++] = <span class="string">'$'</span>;</span><br><span class="line">        <span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        p[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">0</span>, l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; r)&#123;</span><br><span class="line">                c = i;</span><br><span class="line">                l = i;</span><br><span class="line">                r = i;</span><br><span class="line">                <span class="keyword">while</span> (t[l - <span class="number">1</span>] == t[r + <span class="number">1</span>])&#123;</span><br><span class="line">                    l--;</span><br><span class="line">                    r++;</span><br><span class="line">                &#125;</span><br><span class="line">                p[i] = r - c;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p[<span class="number">2</span> * c - i] &lt; r - i)&#123;</span><br><span class="line">                p[i] = p[<span class="number">2</span>*c-i];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                c = i;</span><br><span class="line">                l = <span class="number">2</span>*c - r;</span><br><span class="line">                <span class="keyword">while</span> (t[l - <span class="number">1</span>] == t[r + <span class="number">1</span>])&#123;</span><br><span class="line">                    l--;</span><br><span class="line">                    r++;</span><br><span class="line">                &#125;</span><br><span class="line">                p[i] = r - c;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (p[i] &gt; p[max]) max = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">delete</span> p;</span><br><span class="line">        <span class="keyword">return</span> s.substr((max-p[max]) / <span class="number">2</span>, p[max]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h1><p>神奇的马拉车算法(Manacher’s Algorithm)，找回文子串只需要O(n)的时间复杂度。<br>算法介绍：<a href="https://articles.leetcode.com/longest-palindromic-substring-part-ii/" target="_blank" rel="noopener">https://articles.leetcode.com/longest-palindromic-substring-part-ii/</a><br>基本思路是，把字符串扩展，两两之间插入一个特殊字符，例如’#’。<br>接着用一个数组P来记录以每个点为中心的回文串最长的长度。<br>这样的好处是，不管回文串长度是奇数还是偶数，都可以很自然地包含在内。<br>而且，假设中心为i，从i-d到i+d为最长的回文串，那么d刚好就是原字符串中该位置的回文子串长度。</p>
+<p>得到数组P的算法流程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">init L = 0, R = 0, C = 0;</span><br><span class="line"></span><br><span class="line">if i &gt; R,</span><br><span class="line">    then expand L and R, update C = i</span><br><span class="line"></span><br><span class="line">else if P[ i’ ] &lt; R – i,</span><br><span class="line">    then P[ i ] ← P[ i’ ]</span><br><span class="line">else</span><br><span class="line">    P[ i ] &gt;= P[ i’ ]. (Which we have to expand past the right edge (R) to find P[ i ].</span><br><span class="line">    update C = i</span><br></pre></td></tr></table></figure></p>
+<p>另外，string的初始化，可以用<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">t</span><span class="params">(<span class="number">10</span>,<span class="string">'^'</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>表示初始化为10个<code>&#39;^&#39;</code>。</p>
+  
+    </div> 
+
+    
+        <!-- Division Line -->
+        <div class="division"></div> 
+    
+
+    <div class="post-info-wrapper">
+            
+                    <!-- Post Info -->
+                    <p class="post-date">2018-06-19</p>
+                    
+                    
+                        <p class="post-info-categories">
+                            <a class="post-category-link" href="/leetcode/categories/Medium/">Medium</a>
+                        </p>
+                    
+
+                    
+                        <p class="post-info-tags">
+                            <a class="post-tags-link" href="/leetcode/tags/Dynamic-Programming/">Dynamic Programming</a>, <a class="post-tags-link" href="/leetcode/tags/String/">String</a>
+                        </p>
+                    
+            
+    </div>
+</article>
+
+
+    
+
+            </main>
+
+            <!-- 'To Top' Btn-->
+            
+                <div id="to-top">
+    <a href="#top" class="toTop">
+        <i class="fa fa-pagelines"></i>
+    </a>
+</div>
+            
+
+            <!-- Footer -->
+            
+                <footer class="footer-wrapper col-xs-12 col-sm-12">
+    <div class="footer-banner-wrapper">
+        <p class="footer-banner">Proudly powered by <a href="https://hexo.io/" title="Hexo">Hexo</a></p>
+        <p class="footer-banner">Theme <a href="https://github.com/Lonezj/hexo-theme-wind" title="Wind">wind</a></p>
+    </div>
+</footer>
+            
+        </div>
+
+        <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="/leetcode//css/atelier-plateau-light.min.css" type="text/css">
+        <script src="//cdn.bootcss.com/prettify/r298/prettify.min.js" type="text/javascript"></script>
+    </body>
+</html>

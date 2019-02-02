@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <!-- Head -->
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="ladyrick">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",Math">
+
+    <!-- Page Title -->
+    
+        <title>7. Reverse Integer | Leetcode Solutions</title>
+    
+    <link rel="icon" href="/leetcode//img/favicon-leetcode.png">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="/leetcode/js/script.js"></script>
+    <link rel="stylesheet" href="/leetcode/css/style.css">
+    
+    <style>
+        .deactiveColor{
+            color: #37474f;
+        }
+        .activeColor{
+            color: #006064;
+        }
+        a:hover{
+            color: #006064;
+        }
+        .header-btn{
+            color: #37474f;
+        }
+        
+        .post-content img{
+            margin: 50px auto;
+        }
+        
+    </style>
+</head>
+    <body>
+        <div class="container">
+
+            <!-- Top Anchor -->
+            <div id="top"></div>
+
+            <!-- Header -->
+            <header class="header-wrapper">
+    <div class="header-title-wrapper">
+        <!-- Page Title -->
+        <p class="header-title">
+             
+                
+                    7. Reverse Integer
+                
+            
+        </p>  
+    </div>    
+
+    
+        <!-- Division Line -->
+        <div class="division"></div> 
+    
+    
+    <div class="header-detail">
+        <!-- Header Button -->
+        <div class="header-btn-wrapper">
+            
+                <span>
+                    <a class="home-btn header-btn" href="/leetcode/" title="homepage"><i class="fa fa-home"></i></a>
+                </span>
+
+                
+                    <span>
+                        <a class="catalog-btn header-btn"><i class="fa fa-list-ul"></i></a>
+                    </span>
+                
+            
+        </div>
+    </div>
+</header>
+
+            <!-- Main -->
+            <main>
+                <article class="post-wrapper">
+    
+
+    
+        <!-- Article Catalog -->
+        <div class="catalog-dropdown col-xs-12 col-sm-12">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Discussion"><span class="toc-number">3.</span> <span class="toc-text">Discussion</span></a></li></ol>
+        </div>
+    
+
+    
+        <!--For now, Lightbox Only Show in Post Layout -->
+        
+
+        
+        
+    
+
+    
+
+    <!-- Article Content -->
+    <div class="post-content">
+        <!-- 记得完善 tags 和 category 字段 -->
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p><strong>LINK:</strong> <a href="https://leetcode.com/problems/reverse-integer" target="_blank" rel="noopener">https://leetcode.com/problems/reverse-integer</a></p>
+<p>Given a 32-bit signed integer, reverse digits of an integer.</p>
+<p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 123</span><br><span class="line">Output: 321</span><br></pre></td></tr></table></figure></p>
+<p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: -123</span><br><span class="line">Output: -321</span><br></pre></td></tr></table></figure></p>
+<p>Example 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 120</span><br><span class="line">Output: 21</span><br></pre></td></tr></table></figure></p>
+<p>Note:<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<hr>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">auto</span> _ = []()</span><br><span class="line">&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie();</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> yt;</span><br><span class="line">        <span class="keyword">while</span> (x) &#123;</span><br><span class="line">            yt = y * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (yt / <span class="number">10</span> != y)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            y = yt;</span><br><span class="line">            x = x / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h1><p>了解原理后非常简单。<br>需要注意的是，在每一步都判断是否越界，最简单的方法就是乘以10之后再除以10，看看跟之前相等不相等。然后再加上尾数。<br>这个方法还是看别人的解答得出的。<br>想起了在头条面试也遇到过类似的实时判断越界，当时我是判断每一步操作是否改变结果的符号，其实是错误的方法。<br>因为他乘以10之后不会只越界一位，而是会越界好几位。不保证符号位会变号。</p>
+<p><strong>更新：后来发现，乘以10再除以10的方法，只适用于int类型。</strong><br>因为，<code>int</code>类型最大的正数为<code>2^31-1 = 2147483647</code>；最小的负数为<code>-2^31 = -2147483648</code>。<br>这两个数有个特点，就是最后一位比第一位大。<br>假如存在某个数字，不妨假设它是正数。在反转过程中，最后一次乘以10，加上尾数的操作是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num = __num__ * 10 + __tail__;</span><br></pre></td></tr></table></figure></p>
+<p>其中，<code>__num__ * 10</code>没有导致越界，但是加上尾数却导致越界。<br>这说明，在乘以10之前，<code>__num__</code>最大不超过<code>214748364</code>。<br>但是加上尾数后越界了，说明<code>__num__</code>只能等于<code>214748364</code>，且<code>__tail__ &gt; 7</code>。<br>然而，正如我们之前看到的，如果<code>__tail__ &gt; 7</code>的话，那么反转前的数字本身就已经越界了。</p>
+<p>负数的话分析过程一样。</p>
+<p>因此，<strong>乘以10之后再除以10</strong>的方法，对<code>int</code>类型来说是没有问题的。</p>
+<p>但是，这个方法对于<code>long long</code>类型不再适用。<br>因为<code>long long</code>类型最大的正数为<code>2^63-1 = 9223372036854775807</code>；最小的负数为<code>-2^63 = -9223372036854775808</code>。<br>不满足最后一位比第一位大。<br>因此我可以很轻易地构造出反例：<code>8085774586302733229</code>。<br>这个数字本身不越界，而且最后一次乘以10，也不越界。但是加上尾数8，导致越界。</p>
+<p><strong>更新：这个问题可以通过以下方法解决，多计算一次加法。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if ((num * 10 + tail) / 10 != num)</span><br><span class="line">// 越界</span><br></pre></td></tr></table></figure></p>
+<p><strong>更新：找到一个更好的判断溢出的方法，参考<a href="/leetcode/p/8-string-to-integer-atoi/" title="问题8">问题8</a></strong></p>
+  
+    </div> 
+
+    
+        <!-- Division Line -->
+        <div class="division"></div> 
+    
+
+    <div class="post-info-wrapper">
+            
+                    <!-- Post Info -->
+                    <p class="post-date">2018-06-20</p>
+                    
+                    
+                        <p class="post-info-categories">
+                            <a class="post-category-link" href="/leetcode/categories/Easy/">Easy</a>
+                        </p>
+                    
+
+                    
+                        <p class="post-info-tags">
+                            <a class="post-tags-link" href="/leetcode/tags/Math/">Math</a>
+                        </p>
+                    
+            
+    </div>
+</article>
+
+
+    
+
+            </main>
+
+            <!-- 'To Top' Btn-->
+            
+                <div id="to-top">
+    <a href="#top" class="toTop">
+        <i class="fa fa-pagelines"></i>
+    </a>
+</div>
+            
+
+            <!-- Footer -->
+            
+                <footer class="footer-wrapper col-xs-12 col-sm-12">
+    <div class="footer-banner-wrapper">
+        <p class="footer-banner">Proudly powered by <a href="https://hexo.io/" title="Hexo">Hexo</a></p>
+        <p class="footer-banner">Theme <a href="https://github.com/Lonezj/hexo-theme-wind" title="Wind">wind</a></p>
+    </div>
+</footer>
+            
+        </div>
+
+        <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="/leetcode//css/atelier-plateau-light.min.css" type="text/css">
+        <script src="//cdn.bootcss.com/prettify/r298/prettify.min.js" type="text/javascript"></script>
+    </body>
+</html>
